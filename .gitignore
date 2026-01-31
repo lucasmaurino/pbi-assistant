@@ -7,3 +7,6 @@ __pycache__/
 
 # env secrets
 .env
+
+# Chroma vector store
+chroma_db/
