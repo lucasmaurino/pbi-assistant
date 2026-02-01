@@ -1,4 +1,4 @@
-from typing import TypedDict, Optional, Any, List, Literal
+from typing import TypedDict, Optional, Any, List, Literal, Union
 
 
 class AgentState(TypedDict):
@@ -9,8 +9,8 @@ class AgentState(TypedDict):
     intent: Optional[Literal["informational", "action"]]
 
     # ===== Informational flow =====
-    kg_result: Optional[Any]        # structured data from KG
-    rag_result: Optional[str]       # unstructured context from RAG
+    kg_result: Optional[Union[dict, list]]  # structured data from KG
+    rag_result: Optional[str]               # unstructured context from RAG
 
     # ===== Action flow =====
     action: Optional[str]           # tool name to execute
