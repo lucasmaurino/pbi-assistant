@@ -1,0 +1,93 @@
+project-pbi-agent/
+│
+├── agent_graph/          👈 LangGraph CENTRAL (corazón del sistema)
+│   ├── graph.py
+│   ├── state.py
+│   └── nodes/
+│       ├── intent.py
+│       ├── kg_node.py
+│       ├── rag_node.py
+│       ├── synthesis.py
+│       └── decision.py
+│
+├── informational/
+│   ├── kg/
+│   │   ├── db.sqlite
+│   │   └── kg_queries.py
+│   └── rag/
+│       ├── loader.py
+│       └── vector_store.py
+│
+├── mcp_server/           👈 PROCESO SEPARADO
+│   ├── server.py
+│   ├── schemas.py
+│   └── tools/
+│
+├── ui/
+│   └── chat.py
+│
+├── scripts/
+│   └── init_db.py
+│
+├── requirements.txt
+└── README.md
+
+
+
+
+
+User message
+   ↓
+[Intent Node]
+   ↓
+ ┌─────────────── decision ────────────────┐
+ │                                         │
+ │                                 (if ACTION)
+ │                                         ↓
+ │                                   MCP Client
+ │                                         ↓
+ │                                   Confirmation
+ │
+(if INFORMATION)
+ │
+ ↓
+[KG Node]  ← structured facts
+ ↓
+[RAG Node] ← background/context
+ ↓
+[Synthesis Node]
+ ↓
+Final Answer
+
+
+
+User
+ ↓
+Intent Node
+ ↓
+(if informational — decidido por LLM, no if humano)
+ ↓
+KG Node   → structured truth
+ ↓
+RAG Node  → context / explanations
+ ↓
+Synthesis Node
+ ↓
+Final Answer
+
+
+
+
+El próximo bloque será:
+
+👉 RAG Node (muy parecido conceptualmente)
+👉 luego synthesis (donde se vuelve realmente “inteligente”).
+
+Si querés, cuando corras las pruebas pegá la salida y la revisamos juntos antes de avanzar.
+
+
+
+Si querés, próximo paso natural:
+
+🧠 construir synthesis.py (LLM que junta KG + RAG inteligentemente)
+🔗 luego el graph.py final de LangGraph
