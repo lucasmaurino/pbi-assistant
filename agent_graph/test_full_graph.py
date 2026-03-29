@@ -27,6 +27,8 @@ def run_test(message: str):
 
 if __name__ == "__main__":
     tests = [
+        # ===== INFORMATIONAL =====
+
         # Feature level
         "What is the status of Payments Modernization?",
         "Which PBIs belong to the Payments Modernization feature?",
@@ -41,7 +43,13 @@ if __name__ == "__main__":
 
         # By person (si tenés datos cargados)
         "Which PBIs is Alice working on?",
-        "Which PBIs are assigned to Bob?"
+        "Which PBIs are assigned to Bob?",
+
+        # ===== ACTION =====
+
+        "Move PBI-101 to Active",
+        "Assign PBI-102 to Alice",
+        "Add comment to PBI-101 saying ready for QA"
     ]
 
     for q in tests:
