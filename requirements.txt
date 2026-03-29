@@ -15,3 +15,6 @@ torch>=2.0.0
 mcp>=1.1.0
 pydantic>=2.6.0
 anyio>=4.0.0
+
+# UI
+gradio==4.44.0
