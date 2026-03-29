@@ -21,6 +21,16 @@ def update_pbi_state(input: UpdatePBIStateInput) -> str:
     cursor = conn.cursor()
 
     cursor.execute(
+        "SELECT pbi_id FROM pbis WHERE pbi_id = ?",
+        (input.pbi_id,)
+    )
+    row = cursor.fetchone()
+
+    if not row:
+        conn.close()
+        return f"PBI {input.pbi_id} not found"
+
+    cursor.execute(
         "SELECT state_id FROM states WHERE LOWER(name) = LOWER(?)",
         (input.new_state,)
     )
