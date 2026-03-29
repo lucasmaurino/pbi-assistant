@@ -1,11 +1,20 @@
+# Core agent stack
 langchain==0.2.16
 langchain-groq==0.1.9
 langgraph==0.2.20
 python-dotenv==1.0.1
 
+# RAG stack
 langchain-community==0.2.16
 langchain-text-splitters==0.2.4
-
 chromadb==0.5.5
 sentence-transformers==2.7.0
 torch>=2.0.0
+
+# MCP (action layer)
+mcp>=1.1.0
+pydantic>=2.6.0
+anyio>=4.0.0
+
+# UI
+gradio==4.44.0
