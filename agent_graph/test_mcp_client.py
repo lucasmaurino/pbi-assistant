@@ -14,16 +14,52 @@ async def main():
 
             await session.initialize()
 
+            print("\n--- TEST: update_pbi_state ---")
             result = await session.call_tool(
                 "update_pbi_state",
                 {
                     "input": {
                         "pbi_id": "PBI-102",
-                        "new_state": "Done"
+                        "new_state": "Active"
                     }
                 }
             )
+            print(result)
 
+            print("\n--- TEST: assign_pbi ---")
+            result = await session.call_tool(
+                "assign_pbi",
+                {
+                    "input": {
+                        "pbi_id": "PBI-102",
+                        "person_name": "Bob"
+                    }
+                }
+            )
+            print(result)
+
+            print("\n--- TEST: add_comment ---")
+            result = await session.call_tool(
+                "add_comment",
+                {
+                    "input": {
+                        "pbi_id": "PBI-102",
+                        "comment": "Status updated to Active and assigned to Bob."
+                    }
+                }
+            )
+            print(result)
+
+            print("\n--- TEST: add_comment ---")
+            result = await session.call_tool(
+                "add_comment",
+                {
+                    "input": {
+                        "pbi_id": "PBI-103",
+                        "comment": "Test to validate PBI verification (PBI-103 does not exist)."
+                    }
+                }
+            )
             print(result)
 
 
